@@ -42,7 +42,11 @@ cc.Class({
 
             var node = new cc.Node();
             node.parent = this.node;
-            node.setPosition(420, 260);
+            var widget = node.addComponent(cc.Widget);
+            widget.isAlignTop = true;
+            widget.top = 10;
+            widget.isAlignRight = true;
+            widget.right = 10;
             var sprite = node.addComponent(cc.Sprite);
             sprite.spriteFrame = spfr;
             var btn = node.addComponent(cc.Button);

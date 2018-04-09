@@ -1,7 +1,8 @@
+var SceneBase = require("SceneBase");
 var ShaderUtils = require("ShaderUtils");
 
 cc.Class({
-    extends: cc.Component,
+    extends: SceneBase,
 
     properties: {
         sp: sp.Skeleton

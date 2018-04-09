@@ -1,5 +1,7 @@
+var SceneBase = require("SceneBase");
+
 cc.Class({
-    extends: cc.Component,
+    extends: SceneBase,
 
     properties: {
         spPlayer: cc.Sprite,

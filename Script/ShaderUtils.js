@@ -23,6 +23,7 @@ var ShaderUtils = {
 		if (shaderName === "test") {
 			glProgram.setUniformLocationWith1f("u_test", 1);
 		}
+		return glProgram;
 	},
 
 };

@@ -224,8 +224,6 @@
     },
     "duration": 0.1,
     "zoomScale": 1.2,
-    "pressedSprite": null,
-    "hoverSprite": null,
     "clickEvents": [
       {
         "__id__": 6
@@ -248,6 +246,10 @@
       "a": 255
     },
     "_N$normalSprite": null,
+    "_N$pressedSprite": null,
+    "pressedSprite": null,
+    "_N$hoverSprite": null,
+    "hoverSprite": null,
     "_N$disabledSprite": null,
     "_N$target": {
       "__id__": 3
@@ -508,7 +510,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "31529e65-e30e-4849-b71c-8212f43495f2"
+      "__uuid__": "c4e5582d-fc20-4a98-ab8c-006259b3d3e3"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -589,7 +591,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "31529e65-e30e-4849-b71c-8212f43495f2"
+      "__uuid__": "c4e5582d-fc20-4a98-ab8c-006259b3d3e3"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -617,9 +619,6 @@
     "_fadeTime": 1,
     "_minSeg": 1,
     "_stroke": 16,
-    "_texture": {
-      "__uuid__": "a8027877-d8d6-4645-97a0-52d4a0123dba"
-    },
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -653,21 +652,6 @@
     "node": {
       "__id__": 2
     },
-    "_enabled": true,
-    "ndParent": {
-      "__id__": 3
-    },
-    "sp": {
-      "__id__": 15
-    },
-    "spShadow": {
-      "__id__": 13
-    },
-    "nd1": {
-      "__id__": 3
-    },
-    "nd2": {
-      "__id__": 7
-    }
+    "_enabled": true
   }
 ]

@@ -142,7 +142,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "31529e65-e30e-4849-b71c-8212f43495f2"
+      "__uuid__": "c4e5582d-fc20-4a98-ab8c-006259b3d3e3"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -226,7 +226,7 @@
     "_minSeg": 1,
     "_stroke": 16,
     "_texture": {
-      "__uuid__": "a8027877-d8d6-4645-97a0-52d4a0123dba"
+      "__uuid__": "9c34da45-660c-4e2d-b26e-c6617f575153"
     },
     "_color": {
       "__type__": "cc.Color",

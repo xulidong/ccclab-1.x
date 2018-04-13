@@ -34,7 +34,7 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        cc.loader.loadRes("Texture/back", cc.SpriteFrame, function(err, spfr){
+        cc.loader.loadRes("texture/back", cc.SpriteFrame, function(err, spfr){
             if (err) {
                 cc.error(err);
                 return;

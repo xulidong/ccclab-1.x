@@ -13,7 +13,6 @@ void main()
     float strength = 0.02; // 流光增亮强度(调整该值改变流光的增亮强度)
     float offset = 0.2; // 偏移值(调整该值改变流光的倾斜程度)
     
-    //if( start <= v_texCoord.x && v_texCoord.x <= (start + width))
     if( v_texCoord.x < (start - offset * v_texCoord.y) &&  v_texCoord.x > (start - offset * v_texCoord.y - width))
     {
         vec3 improve = strength * vec3(255, 255, 255);

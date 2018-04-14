@@ -22,7 +22,12 @@ cc.Class({
         if(this._sin > 0.99){
             this._sin = 0;
             this._time = 0;
-        }        
-        this._program.setUniformLocationWith1f(this._program.getUniformLocationForName("sys_time"), this._sin);
+        }
+        if(cc.sys.isNative){
+            var glProgram_state = cc.GLProgramState.getOrCreateWithGLProgram(this._program);
+            glProgram_state.setUniformFloat("sys_time", this._sin);
+        } else {
+            this._program.setUniformLocationWith1f(this._program.getUniformLocationForName("sys_time"), this._sin);
+        }
     },
 });

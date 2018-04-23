@@ -24,10 +24,10 @@ cc.Class({
             glState.setUniformFloat("time", this.time);
             glState.setUniformVec2( "resolution", this.resolution);
         } else {
-            let res = this.program.getUniformLocationForName( "resolution" );
-            let ba = this.program.getUniformLocationForName("time");
+            var tm = this.program.getUniformLocationForName("time");
+            this.program.setUniformLocationWith1f(tm, this.time);
+            var res = this.program.getUniformLocationForName( "resolution" );
             this.program.setUniformLocationWith2f(res, this.resolution.x,this.resolution.y);
-            this.program.setUniformLocationWith1f(ba, this.time);
         }
     },
 

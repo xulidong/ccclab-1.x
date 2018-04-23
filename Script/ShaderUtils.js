@@ -7,10 +7,8 @@ var ShaderUtils = {
 			glProgram = new cc.GLProgram();
 			var vert = require(cc.js.formatStr("%s.vert", shaderName));
 			var frag = require(cc.js.formatStr("%s.frag", shaderName));
-			if (cc.sys.isNative) {  
-				glProgram.initWithString(vert, frag);
-			} else {  
-				glProgram.initWithVertexShaderByteArray(vert, frag);
+			glProgram.initWithString(vert, frag);
+			if (!cc.sys.isNative) {  
 				glProgram.addAttribute(cc.macro.ATTRIBUTE_NAME_POSITION, cc.macro.VERTEX_ATTRIB_POSITION);  
 				glProgram.addAttribute(cc.macro.ATTRIBUTE_NAME_COLOR, cc.macro.VERTEX_ATTRIB_COLOR);  
 				glProgram.addAttribute(cc.macro.ATTRIBUTE_NAME_TEX_COORD, cc.macro.VERTEX_ATTRIB_TEX_COORDS);  
@@ -21,9 +19,6 @@ var ShaderUtils = {
 			this.shaderPrograms[shaderName] = glProgram;
 		}
 		node._sgNode.setShaderProgram(glProgram);
-		if (shaderName === "test") {
-			glProgram.setUniformLocationWith1f("u_test", 1);
-		}
 		return glProgram;
 	},
 

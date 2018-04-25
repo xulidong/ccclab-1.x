@@ -17,7 +17,7 @@ cc.Class({
         }
     },
 
-    onLoad: function () {
+    onLoad () {
         this.oriRokerPos = this.node.getPosition();
         this.oriRokerCenterPos = this.spRokerCenter.node.getPosition();
 
@@ -27,7 +27,7 @@ cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
     },
 
-    onTouchStart: function(event) {
+    onTouchStart (event) {
         var touchPos = event.getLocation();
         var pos = this.node.parent.convertToNodeSpaceAR(touchPos);
         var dir = this.getDirection(pos);
@@ -35,26 +35,26 @@ cc.Class({
         this.updateRokerPos(pos);
     },
 
-    onTouchMove: function(event) {
+    onTouchMove (event) {
         var touchPos = event.getLocation();
         var pos = this.node.parent.convertToNodeSpaceAR(touchPos);
         this.moveDir = this.getDirection(pos);
         this.updateRokerPos(pos);
     },
 
-    onTouchEnd: function(event) {
+    onTouchEnd (event) {
         this.spRokerCenter.node.setPosition(this.oriRokerCenterPos);
         this.node.setPosition(this.oriRokerPos);
         this.moveDir = null;
     },
 
-    onTouchCancel: function(event) {
+    onTouchCancel (event) {
         this.spRokerCenter.node.setPosition(this.oriRokerCenterPos);
         this.node.setPosition(this.oriRokerPos);
         this.moveDir = null;
     },
 
-    getDirection: function(pos) {
+    getDirection (pos) {
         var oriPos = this.node.getPosition();
         var rad = Math.atan2(pos.y - oriPos.y, pos.x - oriPos.x);// [-PI, PI]
         if ((rad >= -Math.PI / 8 && rad < 0) || (rad >= 0 && rad < Math.PI / 8)) {
@@ -76,7 +76,7 @@ cc.Class({
         }
     },
 
-    updateRokerPos: function(pos) {
+    updateRokerPos (pos) {
         this.spRokerCenter.node.setPosition(pos);
         var oriPos = this.node.getPosition();
         var subVec = cc.v2(pos.x - oriPos.x, pos.y - oriPos.y);
@@ -89,30 +89,30 @@ cc.Class({
         }
     },
 
-    updatePlayerPos: function(dir) {
-        if (!this.player) {
+    updatePlayerPos (dir) {
+        if (!this.actor) {
             return;
         }
 
         var size = cc.director.getWinSize();
-        var x = this.player.x + dir.x * this.moveSpeed;
-        // var maxX = size.width * 0.5 - this.player.width * 0.5;
+        var x = this.actor.node.x + dir.x * this.moveSpeed;
+        // var maxX = size.width * 0.5 - this.actor.node.width * 0.5;
         // var x = x > 0 ? Math.min(x, maxX) : Math.max(x, -maxX);
 
-        var y = this.player.y + dir.y * this.moveSpeed;
-        // var maxY = size.height * 0.5 - this.player.height * 0.5;
+        var y = this.actor.node.y + dir.y * this.moveSpeed;
+        // var maxY = size.height * 0.5 - this.actor.node.height * 0.5;
         // var y = y > 0 ? Math.min(y, maxY) : Math.max(y, -maxY);
 
-        this.player.setPosition(x, y);
+        this.actor.setActorPos(x, y);
     },
 
-    update: function(dt) {
+    update (dt) {
         if (this.moveDir) {
             this.updatePlayerPos(this.moveDir);
         }
     },
 
-    setPlayer: function (player) {
-        this.player = player;
-    },
+    setActor (actor) {
+        this.actor = actor;
+    }
 });

@@ -6,15 +6,11 @@ cc.Class({
     extends: cc.Component,
 
     onLoad () {
-        // tiles
-        this.tileList = [
-            "resources/texture/tile/tile0.png",
-            "resources/texture/tile/tile1.png",
-            "resources/texture/tile/tile2.png",
-        ];
          // tile width and height
-         this.tileW = 64;
-         this.tileH = 64;
+         this.tileW = 1024;
+         this.tileH = 1024;
+         this.xMax = 5;
+         this.yMax = 3;
  
          // count of tile on x and y
          var rootMap = this.node.parent;;
@@ -36,7 +32,9 @@ cc.Class({
         this.udpateCamera();
     },
 
-    loadTile (path) {
+    loadTile (x, y) {
+        var mapId = 1000;
+        var path = cc.js.formatStr("resources/texture/map_%s/tile_%s_%s.jpg", mapId, x, y);
         var node = new cc.Node();
         node.setAnchorPoint(0, 0);
         node.setLocalZOrder(-1);
@@ -57,15 +55,14 @@ cc.Class({
         var cY = Math.floor(center.y/this.tileH);
 
         var curShow = {};
-        var fromX = cX - Math.ceil(this.cntX / 2);
-        var fromY = cY - Math.floor(this.cntY / 2);
+        var fromX = Math.min(Math.max(cX - Math.floor(this.cntX / 2), 0), this.xMax - this.cntX);
+        var fromY = Math.min(Math.max(cY - Math.floor(this.cntY / 2), 0), this.yMax - this.cntY);
         for (var x = fromX; x <= fromX + this.cntX; x++) {
             for (var y = fromY; y <= fromY + this.cntY; y++) {
                 var key = this.getCacheKey(x, y);
                 var tile = this.getTileByKey(key);
                 if (!tile) {
-                    var index = MathUtils.randInt(0, this.tileList.length - 1);
-                    tile = this.loadTile(this.tileList[index]);
+                    tile = this.loadTile(x, y);
                     tile.node.parent = this.node;
                     tile.node.setPosition(x * this.tileW, y * this.tileH);
                     this.setTileByKey(key, tile);
@@ -77,7 +74,7 @@ cc.Class({
     },
 
     getCacheKey (x, y) {
-        return cc.js.formatStr("(%s,%s)", x, y);
+        return cc.js.formatStr("%s_%s", x, y);
     },
 
     getTileByKey (key) {
@@ -106,7 +103,10 @@ cc.Class({
         if (!this.actorFollow) {
             return;
         }
-        this.node.x = -this.actorFollow.node.x;
-        this.node.y = - this.actorFollow.node.y;
+        var viewW = this.node.parent.width;
+        var viewH = this.node.parent.height;
+        
+        this.node.x = viewW * 0.5 -this.actorFollow.node.x;
+        this.node.y = viewH * 0.5 - this.actorFollow.node.y;
     },
 });

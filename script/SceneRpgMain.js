@@ -37,7 +37,7 @@ cc.Class({
         var ndActor = new cc.Node();
         ndActor.parent = this.compMap.node;
         var actor = ndActor.addComponent("CompActor");
-        actor.setActorPos(0, 0);
+        actor.setActorPos(480, 320);
 
         // player
         var ndPlayer = new cc.Node();

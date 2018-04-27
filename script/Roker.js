@@ -94,14 +94,18 @@ cc.Class({
             return;
         }
 
-        var size = cc.director.getWinSize();
         var x = this.actor.node.x + dir.x * this.moveSpeed;
-        // var maxX = size.width * 0.5 - this.actor.node.width * 0.5;
-        // var x = x > 0 ? Math.min(x, maxX) : Math.max(x, -maxX);
-
         var y = this.actor.node.y + dir.y * this.moveSpeed;
-        // var maxY = size.height * 0.5 - this.actor.node.height * 0.5;
-        // var y = y > 0 ? Math.min(y, maxY) : Math.max(y, -maxY);
+
+        var actorHalfW = this.actor.node.width * 0.5;
+        var actorHalfH = this.actor.node.height * 0.5;
+
+        var size = mainScene.compMap.node.getContentSize();
+        var maxX = size.width - actorHalfW;
+        var maxY = size.height - actorHalfH;
+
+        x = MathUtils.between(x, actorHalfW, maxX);
+        y = MathUtils.between(y, actorHalfH, maxY);
 
         this.actor.setActorPos(x, y);
     },

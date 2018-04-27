@@ -11,6 +11,9 @@ cc.Class({
          this.tileH = 1024;
          this.xMax = 5;
          this.yMax = 3;
+
+         this.node.width = this.tileW * (this.xMax + 1);
+         this.node.height = this.tileH * (this.yMax + 1);
  
          // count of tile on x and y
          var rootMap = this.node.parent;;
@@ -106,7 +109,7 @@ cc.Class({
         var viewW = this.node.parent.width;
         var viewH = this.node.parent.height;
         
-        this.node.x = viewW * 0.5 -this.actorFollow.node.x;
-        this.node.y = viewH * 0.5 - this.actorFollow.node.y;
+        this.node.x = MathUtils.between(viewW / 2 -this.actorFollow.node.x, viewW - this.node.width , 0);
+        this.node.y = MathUtils.between(viewH / 2 - this.actorFollow.node.y, viewH - this.node.height , 0);
     },
 });

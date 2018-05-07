@@ -100,7 +100,7 @@ cc.Class({
         var actorHalfW = this.actor.node.width * 0.5;
         var actorHalfH = this.actor.node.height * 0.5;
 
-        var size = mainScene.compMap.node.getContentSize();
+        var size = sceneMain.compMap.node.getContentSize();
         var maxX = size.width - actorHalfW;
         var maxY = size.height - actorHalfH;
 

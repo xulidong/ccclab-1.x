@@ -5,7 +5,7 @@
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "smap": {
+    "mini_map": {
       "ver": "1.0.3",
       "uuid": "c8df114f-7795-4a45-b2bb-d4df9ba991d5",
       "rawTextureUuid": "52977fbd-40fc-4368-a3e5-20f729d96c22",

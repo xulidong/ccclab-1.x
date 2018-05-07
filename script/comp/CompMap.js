@@ -5,6 +5,10 @@
 cc.Class({
     extends: cc.Component,
 
+    properties: {
+        compMiniMap: cc.Component,
+    },
+
     onLoad () {
          // tile width and height
          this.tileW = 1024;
@@ -27,6 +31,13 @@ cc.Class({
         this.actorFollow = null;
     },
 
+    loadMap (mapId) {
+        this.mapId = mapId;
+        this.compMiniMap.setMapId(mapId);
+
+        this.updateMap();
+    },
+
     update (dt) {
         this.updateMap();
     },
@@ -36,8 +47,7 @@ cc.Class({
     },
 
     loadTile (x, y) {
-        var mapId = 1000;
-        var path = cc.js.formatStr("resources/texture/map_%s/tile_%s_%s.jpg", mapId, x, y);
+        var path = cc.js.formatStr("resources/texture/map_%s/tile_%s_%s.jpg", this.mapId, x, y);
         var node = new cc.Node();
         node.setAnchorPoint(0, 0);
         node.setLocalZOrder(-1);
@@ -99,7 +109,7 @@ cc.Class({
     },
 
     setActorFollow (actor) {
-        this.actorFollow = actor; 
+        this.actorFollow = actor;
     },
 
     udpateCamera () {

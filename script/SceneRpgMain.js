@@ -19,7 +19,7 @@ cc.Class({
     },
 
     onLoad () {
-        game.setAsGlobal("mainScene", this);
+        game.setAsGlobal("sceneMain", this);
     },
 
     start () {
@@ -28,7 +28,8 @@ cc.Class({
 
     onEnterScene () {
         this.loadPlayer();
-        this.compMap.updateMap();
+        var mapId = 1000;// test map id
+        this.compMap.loadMap(mapId);
     },
 
 

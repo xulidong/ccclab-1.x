@@ -41,7 +41,7 @@ cc.Class({
 		ShaderUtils.setShader(this.sp, "outlight");
 	},
 
-	onClickTest: function(){
-		ShaderUtils.setShader(this.sp, "test");
+	onClickAsyncShader: function(){
+		ShaderUtils.useShader(this.sp, "async_gray");
 	},
 });

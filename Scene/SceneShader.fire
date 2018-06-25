@@ -48,7 +48,7 @@
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
     "groupIndex": 0,
-    "autoReleaseAssets": null
+    "autoReleaseAssets": false
   },
   {
     "__type__": "cc.Node",
@@ -2082,7 +2082,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "btnTest",
+    "_name": "btnAsync",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
@@ -2207,7 +2207,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "测试",
+    "_N$string": "异步变灰",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -2313,7 +2313,7 @@
       "__id__": 2
     },
     "component": "SceneShader",
-    "handler": "onClickTest",
+    "handler": "onClickGray",
     "customEventData": ""
   },
   {

@@ -1,7 +1,7 @@
 var ShaderUtils = {
 	shaderPrograms: {},
 
-	setShader: function(node, shaderName) {
+	setShader: function(sprite, shaderName) {
 		var glProgram = this.shaderPrograms[shaderName];
 		if (!glProgram) {
 			glProgram = new cc.GLProgram();
@@ -12,16 +12,14 @@ var ShaderUtils = {
 				glProgram.addAttribute(cc.macro.ATTRIBUTE_NAME_POSITION, cc.macro.VERTEX_ATTRIB_POSITION);  
 				glProgram.addAttribute(cc.macro.ATTRIBUTE_NAME_COLOR, cc.macro.VERTEX_ATTRIB_COLOR);  
 				glProgram.addAttribute(cc.macro.ATTRIBUTE_NAME_TEX_COORD, cc.macro.VERTEX_ATTRIB_TEX_COORDS);  
-				glProgram.addAttribute(cc.macro.ATTRIBUTE_NAME_TEX_COORD, cc.macro.VERTEX_ATTRIB_TEX_COORDS); 
 			}
 			glProgram.link();  
 			glProgram.updateUniforms();
 			this.shaderPrograms[shaderName] = glProgram;
 		}
-		node._sgNode.setShaderProgram(glProgram);
+		sprite._sgNode.setShaderProgram(glProgram);
 		return glProgram;
 	},
-
 };
 
 module.exports = ShaderUtils;

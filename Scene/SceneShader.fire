@@ -2313,7 +2313,7 @@
       "__id__": 2
     },
     "component": "SceneShader",
-    "handler": "onClickGray",
+    "handler": "onClickAsyncShader",
     "customEventData": ""
   },
   {

@@ -45,9 +45,9 @@ var ShaderUtils = {
 		}
 
 		// vart shader
-		var vert = require(cc.js.formatStr("shader/%s.vert", shaderName));
+		var vert = cc.js.formatStr("shader/%s.vert", shaderName);
 		if (this.shaderMap[vert]) {
-			this.onLoadShader(vert, this.shaderMap[vert]);
+			this.onLoadShader(vert, shaderName, cb);
 		} else {
 			cc.loader.loadRes(vert, function (err, shaderStr){
 				if (err) {
@@ -55,14 +55,14 @@ var ShaderUtils = {
 					return;
 				}
 				this.shaderMap[vert] = shaderStr;
-				this.onLoadShader(sprite, shaderName, shaderStr);
+				this.onLoadShader(sprite, shaderName, cb);
 			}.bind(this));
 		}
 
 		// frag shader
-		var frag = require(cc.js.formatStr("shader/%s.frag", shaderName));
+		var frag = cc.js.formatStr("shader/%s.frag", shaderName);
 		if (this.shaderMap[frag]) {
-			this.onLoadShader(frag, this.shaderMap[frag]);
+			this.onLoadShader(frag, shaderName, cb);
 		} else {
 			cc.loader.loadRes(frag, function (err, shaderStr){
 				if (err) {
@@ -70,16 +70,16 @@ var ShaderUtils = {
 					return;
 				}
 				this.shaderMap[frag] = shaderStr;
-				this.onLoadShader(sprite, shaderName, shaderStr);
+				this.onLoadShader(sprite, shaderName, cb);
 			}.bind(this));
 		}
 	},
 
 	onLoadShader: function(sprite, shaderName, cb) {
-		var vert = require(cc.js.formatStr("shader/%s.vert", shaderName));
-		var frag = require(cc.js.formatStr("shader/%s.frag", shaderName));
+		var vert = cc.js.formatStr("shader/%s.vert", shaderName);
+		var frag = cc.js.formatStr("shader/%s.frag", shaderName);
 		if (this.shaderMap[vert] && this.shaderMap[frag]) {
-			var glProgram = this.getGlPropgram(vert, frag);
+			var glProgram = this.getGlPropgram(this.shaderMap[vert], this.shaderMap[frag]);
 			this.shaderPrograms[shaderName] = glProgram;
 			sprite._sgNode.setShaderProgram(glProgram);
 			if (cb) {
